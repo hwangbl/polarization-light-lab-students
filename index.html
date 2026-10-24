@@ -5,7 +5,7 @@
 <meta name="description" content="大学物理偏振光虚拟实验室：真实仪器照片、三维可旋转光路、马吕斯定律、波片与布儒斯特角模拟，以及实验数据处理。">
 <meta name="theme-color" content="#1172ff"><title>偏振光虚拟实验室学生版 · 大学物理实验</title>
 <link rel="stylesheet" href="./katex.min.css?v=b075123b50e5">
-<link rel="stylesheet" href="./style.css?v=432c50542599">
+<link rel="stylesheet" href="./style.css?v=bdbb3fb6f390">
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
@@ -37,7 +37,7 @@
 <div class="workspace-grid">
 <div class="lab-visual-column">
 <section class="scene-panel">
-<div class="scene-toolbar"><span><i class="live-dot"></i><b id="scene-label" style="font-weight:400">三维实验光路</b></span><div><button class="scene-view selected" data-view="perspective">立体</button><button class="scene-view" data-view="top">俯视</button><button class="scene-view" data-view="front">正视</button><button id="labels-toggle" class="scene-view" aria-pressed="false">显示名称</button><button id="selected-instrument-info" class="scene-view" hidden>查看用法</button><button id="assembly-toggle" class="scene-view" aria-pressed="false">自主搭建</button><button id="interaction-view" class="scene-view selected" aria-pressed="true">旋转视角</button><button id="interaction-move" class="scene-view" aria-pressed="false" disabled>移动元件</button><button id="interaction-rotate" class="scene-view" aria-pressed="false">转动刻度</button><button id="explode-button" class="scene-view">元件展开</button><button id="fullscreen-button" class="scene-view" aria-label="全屏显示三维场景">⛶</button></div></div>
+<div class="scene-toolbar"><span><i class="live-dot"></i><b id="scene-label" style="font-weight:400">三维实验光路</b></span><div><button class="scene-view selected" data-view="perspective">立体</button><button class="scene-view" data-view="top">俯视</button><button class="scene-view" data-view="front">正视</button><button id="labels-toggle" class="scene-view" aria-pressed="false">显示名称</button><button id="selected-instrument-info" class="scene-view" hidden>查看用法</button><button id="explode-button" class="scene-view">元件展开</button><button id="fullscreen-button" class="scene-view" aria-label="全屏显示三维场景">⛶</button></div></div>
 <section id="scene-current-meter" class="current-meter scene-current-meter" aria-label="独立光电流显示器">
 <div class="meter-readout"><div class="meter-label"><i></i>光电流显示器 <span class="meter-simulation">模拟读数</span></div><div class="meter-number"><i class="meter-symbol">I</i><span class="meter-equals">=</span><output id="current-value" aria-label="模拟光电流，单位微安">75.200</output><span class="meter-unit">μA</span></div></div>
 <div class="meter-detail"><div class="meter-bottom"><span>归一化透射/接收率</span><b id="transmission-value">75.00%</b></div><div class="meter-track" aria-hidden="true"><div id="current-bar"></div></div><p class="meter-live-note">随元件操作实时更新 · 含背景电流</p></div>
@@ -46,11 +46,14 @@
 <div class="scene-caption"><span>拖动旋转视角 · 滚轮缩放 · 点击元件显示名称</span><button id="pause-wave">Ⅱ 暂停电场动画</button></div>
 <div id="optical-chain" class="optical-chain"></div>
 <div id="assembly-panel" class="assembly-panel" hidden>
-<div class="assembly-heading"><strong>沿导轨自主搭建</strong><div><button id="assembly-shuffle" class="btn secondary small">打乱位置</button><button id="assembly-restore" class="btn secondary small">恢复参考位置</button><button id="assembly-check" class="btn primary small">检查当前光路</button></div></div>
-<p>光从光源沿 +x 向右传播，到探测器结束。只计算两者之间且已插入的器件；搭建位置决定真实作用顺序。</p>
-<div class="assembly-position-controls"><label for="assembly-element">选择元件</label><select id="assembly-element"><option value="laser">光源</option><option value="p1" selected>偏振片 P₁</option><option value="wave">波片</option><option value="p2">偏振片 P₂</option><option value="detector">探测器</option></select><button id="assembly-left" class="btn secondary small" aria-label="所选元件向左移动半个导轨单位">← 左移</button><input id="assembly-position" type="number" min="-10" max="10" step="0.1" value="-5.6" aria-label="所选元件导轨位置"><button id="assembly-right" class="btn secondary small" aria-label="所选元件向右移动半个导轨单位">右移 →</button></div>
+<details class="assembly-tools"><summary>光路检查与精细调节</summary>
+<div class="assembly-heading"><strong>自由搭建与光路检查</strong><div><button id="assembly-shuffle" class="btn secondary small">打乱位置</button><button id="assembly-restore" class="btn secondary small">恢复参考位置</button><button id="assembly-check" class="btn primary small">检查当前光路</button></div></div>
+<p>直接拖底座移动，拖刻度环转动；把器件拖到导轨旁即可取下，再拖回轨道自动放入。元件留在旁边，角度保持。光只经过已放回导轨且位于光源与探测器之间的元件。</p>
+<div class="assembly-position-controls"><label for="assembly-element">精细调位置</label><select id="assembly-element"><option value="laser">光源</option><option value="p1" selected>偏振片 P₁</option><option value="wave">波片</option><option value="p2">偏振片 P₂</option><option value="detector">探测器</option></select><button id="assembly-left" class="btn secondary small" aria-label="所选元件向左移动半个导轨单位">← 左移</button><input id="assembly-position" type="number" min="-10" max="10" step="0.1" value="-5.6" aria-label="所选元件导轨位置"><button id="assembly-right" class="btn secondary small" aria-label="所选元件向右移动半个导轨单位">右移 →</button></div>
+<p id="assembly-element-status" class="assembly-element-status"></p>
+</details>
 <p id="assembly-feedback" class="assembly-feedback" role="status" aria-live="polite"></p>
-</div><p id="interaction-help" class="interaction-help">拖空白处旋转视角；选择“转动刻度”可直接拖动偏振片或波片的圆盘。</p>
+</div><p id="interaction-help" class="interaction-help">拖底座移动 · 拖刻度环转动 · 拖出导轨取下 · 拖回轨道放入 · 空白处旋转视角</p>
 </section>
 <div class="visualization-grid">
 <section class="panel chart-panel"><div class="panel-heading"><h2>电场矢量轨迹</h2><span id="polarization-tag" class="small-tag">线偏振光</span></div><canvas id="ellipse-chart" aria-label="波片后电场矢量端点轨迹"></canvas><div class="chart-note" id="ellipse-note">固定空间位置，沿光传播方向观察</div></section>
@@ -70,12 +73,14 @@
 <div class="angle-control"><label for="p2-angle"><span class="control-name"><i class="color-p2"></i>检偏器 \(P_2\) <input id="p2-enabled" type="checkbox" checked aria-label="插入检偏器"></span><span><input id="p2-angle-num" type="number" min="0" max="360" step="1" value="30" aria-label="检偏器角度数值">°</span></label><input id="p2-angle" type="range" min="0" max="360" value="30" step="1"><div class="range-marks"><span>0°</span><span>180°</span><span>360°</span></div></div>
 </div>
 <div id="brewster-controls" hidden>
-<label class="field select-field"><span>入射偏振</span><select id="brewster-polarization"><option value="natural">含 p、s 分量（非偏振模型）</option><option value="p">纯 p 偏振入射（比较）</option><option value="s">纯 s 偏振入射（比较）</option></select></label>
+<label class="field select-field"><span>入射偏振</span><select id="brewster-polarization"><option value="natural">自然光（理想模型）</option><option value="partial">部分偏振光</option><option value="p">纯 p 偏振入射（比较）</option><option value="s">纯 s 偏振入射（比较）</option></select></label>
+<label class="field inline-field" id="brewster-dop-field" hidden><span>入射偏振度 \(D\) / %</span><input id="brewster-dop" type="number" min="0" max="100" step="1" value="50"></label>
+<div class="angle-control" id="brewster-source-angle-control" hidden><label for="brewster-source-angle">偏振分量方向 \(\alpha_{\mathrm{in}}\) <span><input id="brewster-source-angle-num" type="number" min="0" max="180" step="1" value="45" aria-label="部分偏振光的偏振方向数值">°</span></label><input id="brewster-source-angle" type="range" min="0" max="180" step="1" value="45"><div class="range-marks"><span>p · 0°</span><span>s · 90°</span><span>180°</span></div><p class="field-help">按自然光与线偏振分量叠加建模；方向从 p 轴量起。偏振度 0% 为自然光，100% 为线偏振光。</p></div>
 <div class="angle-control"><label for="incident-angle">玻璃入射角 \(\theta\) <span><input id="incident-angle-num" type="number" min="0" max="85" step=".1" value="45" aria-label="玻璃入射角数值">°</span></label><input id="incident-angle" type="range" min="0" max="85" step=".1" value="45"><div class="range-marks"><span>法线 0°</span><span>45°</span><span>85°</span></div></div>
 <div class="angle-control"><label for="detector-angle">探测臂方位 \(\varphi\) <span><input id="detector-angle-num" type="number" min="0" max="170" step=".1" value="90" aria-label="探测臂方位数值">°</span></label><input id="detector-angle" type="range" min="0" max="170" step=".1" value="90"><div class="range-marks"><span>0°</span><span>85°</span><span>170°</span></div></div>
 <label class="check-row"><input id="track-reflection" type="checkbox" checked>探测臂跟随反射方向（\(\varphi=2\theta\)）</label><p class="field-help">\(\varphi\) 从反向入射光轴量起。关闭跟随后可手动调臂，体验接收光路对准。</p>
 <div class="angle-control"><label for="brewster-analyzer-angle"><span class="control-name">反射检偏器 \(\beta\) <input id="brewster-analyzer-enabled" type="checkbox" checked aria-label="插入反射光路检偏器"></span><span><input id="brewster-analyzer-angle-num" type="number" min="0" max="360" step="1" value="0" aria-label="反射检偏器角度数值">°</span></label><input id="brewster-analyzer-angle" type="range" min="0" max="360" step="1" value="0"><div class="range-marks"><span>选 p · 0°</span><span>180°</span><span>360°</span></div></div>
-<p class="field-help">先调入射角、对准接收臂，再旋转反射光路检偏器寻找最小值。\(\beta=0^\circ\) 选 p 分量、抑制 s 分量。含 p、s 分量的选项是非偏振教学模型，真实光源须先检查偏振态；纯线偏振入射时可消光并非布角独有判据。</p>
+<p class="field-help">先调入射角、对准接收臂，再旋转反射光路检偏器寻找最小值。\(\beta=0^\circ\) 选 p 分量、抑制 s 分量。自然光为非偏振理想模型；部分偏振光可调偏振度与偏振方向。真实光源须先检查偏振态；100% 偏振时，能消光并非布角独有判据。</p>
 <label class="field inline-field"><span>玻璃折射率 \(n_2\)</span><input id="glass-index" type="number" min="1.01" max="2.5" step=".00001" value="1.45845"></label>
 <div class="info-strip" id="brewster-values"></div><button id="goto-brewster" class="btn secondary full-width">对照理论布儒斯特角</button>
 </div>
@@ -96,5 +101,5 @@
 </div>
 <dialog id="instrument-dialog"><button id="close-dialog" class="dialog-close" aria-label="关闭仪器说明">×</button><div id="dialog-content"></div></dialog>
 <div id="toast" class="toast" role="status"></div>
-<script defer src="./app.bundle.js?v=9ddf78498a3e"></script>
+<script defer src="./app.bundle.js?v=b3ed6ce8a3bd"></script>
 </body></html>
