@@ -4,8 +4,8 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="大学物理偏振光虚拟实验室：真实仪器照片、三维可旋转光路、马吕斯定律、波片与布儒斯特角模拟，以及实验数据处理。">
 <meta name="theme-color" content="#1172ff"><title>偏振光虚拟实验室学生版 · 大学物理实验</title>
-<link rel="stylesheet" href="./katex.min.css">
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./katex.min.css?v=b075123b50e5">
+<link rel="stylesheet" href="./style.css?v=432c50542599">
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
@@ -38,6 +38,10 @@
 <div class="lab-visual-column">
 <section class="scene-panel">
 <div class="scene-toolbar"><span><i class="live-dot"></i><b id="scene-label" style="font-weight:400">三维实验光路</b></span><div><button class="scene-view selected" data-view="perspective">立体</button><button class="scene-view" data-view="top">俯视</button><button class="scene-view" data-view="front">正视</button><button id="assembly-toggle" class="scene-view" aria-pressed="false">自主搭建</button><button id="interaction-view" class="scene-view selected" aria-pressed="true">旋转视角</button><button id="interaction-move" class="scene-view" aria-pressed="false" disabled>移动元件</button><button id="interaction-rotate" class="scene-view" aria-pressed="false">转动刻度</button><button id="explode-button" class="scene-view">元件展开</button><button id="fullscreen-button" class="scene-view" aria-label="全屏显示三维场景">⛶</button></div></div>
+<section id="scene-current-meter" class="current-meter scene-current-meter" aria-label="独立光电流显示器">
+<div class="meter-readout"><div class="meter-label"><i></i>光电流显示器 <span class="meter-simulation">模拟读数</span></div><div class="meter-number"><i class="meter-symbol">I</i><span class="meter-equals">=</span><output id="current-value" aria-label="模拟光电流，单位微安">75.200</output><span class="meter-unit">μA</span></div></div>
+<div class="meter-detail"><div class="meter-bottom"><span>归一化透射/接收率</span><b id="transmission-value">75.00%</b></div><div class="meter-track" aria-hidden="true"><div id="current-bar"></div></div><p class="meter-live-note">随元件操作实时更新 · 含背景电流</p></div>
+</section>
 <div id="lab-scene" class="scene-canvas"><div class="scene-loading">正在构建光学实验台…</div></div>
 <div class="scene-caption"><span>拖动旋转视角 · 滚轮缩放 · 点击仪器查看用途</span><button id="pause-wave">Ⅱ 暂停电场动画</button></div>
 <div id="optical-chain" class="optical-chain"></div>
@@ -76,7 +80,6 @@
 <div class="info-strip" id="brewster-values"></div><button id="goto-brewster" class="btn secondary full-width">对照理论布儒斯特角</button>
 </div>
 <details class="calibration"><summary>光电流标定与对准</summary><label class="field inline-field"><span>满量程映射 / μA</span><input id="gain" type="number" min="1" max="10000" step="1" value="100"></label><label class="field inline-field"><span>背景电流 / μA</span><input id="dark" type="number" min="0" max="100" step=".01" value="0.2"></label><label class="field inline-field"><span>共轴耦合 / %</span><input id="alignment" type="number" min="0" max="100" step="1" value="100"></label><p>电流是可调的教学标定值。背景与探测臂接收响应用于操作练习，不代表仪器出厂参数。</p></details>
-<div class="current-meter"><div class="meter-label"><i></i>模拟光电流</div><div class="meter-number"><span id="current-value">75.200</span><span>μA</span></div><div class="meter-track"><div id="current-bar"></div></div><div class="meter-bottom"><span>归一化透射/接收率</span><b id="transmission-value">75.00%</b></div></div>
 <button id="record-current" class="btn primary full-width">＋ 记录当前读数</button><button id="auto-scan" class="btn secondary full-width">⟳ 自动扫描一组模拟数据</button>
 </section>
 <section class="panel guide-panel"><div class="panel-heading"><h2>分步实验引导</h2><span id="guide-position">1 / 5</span></div><div class="guide-dots" id="guide-dots"></div><h3 id="guide-title"></h3><p id="guide-body"></p><div class="guide-task"><span>动手试一试</span><p id="guide-task"></p></div><details id="guide-answer"><summary>查看预期现象</summary><p id="guide-expected"></p></details><div class="guide-buttons"><button id="guide-prev" class="btn secondary small">上一步</button><button id="guide-next" class="btn primary small">下一步 →</button></div></section>
@@ -93,5 +96,5 @@
 </div>
 <dialog id="instrument-dialog"><button id="close-dialog" class="dialog-close" aria-label="关闭仪器说明">×</button><div id="dialog-content"></div></dialog>
 <div id="toast" class="toast" role="status"></div>
-<script defer src="./app.bundle.js"></script>
+<script defer src="./app.bundle.js?v=02dbbaeb5b0d"></script>
 </body></html>
