@@ -37,13 +37,13 @@
 <div class="workspace-grid">
 <div class="lab-visual-column">
 <section class="scene-panel">
-<div class="scene-toolbar"><span><i class="live-dot"></i><b id="scene-label" style="font-weight:400">三维实验光路</b></span><div><button class="scene-view selected" data-view="perspective">立体</button><button class="scene-view" data-view="top">俯视</button><button class="scene-view" data-view="front">正视</button><button id="assembly-toggle" class="scene-view" aria-pressed="false">自主搭建</button><button id="interaction-view" class="scene-view selected" aria-pressed="true">旋转视角</button><button id="interaction-move" class="scene-view" aria-pressed="false" disabled>移动元件</button><button id="interaction-rotate" class="scene-view" aria-pressed="false">转动刻度</button><button id="explode-button" class="scene-view">元件展开</button><button id="fullscreen-button" class="scene-view" aria-label="全屏显示三维场景">⛶</button></div></div>
+<div class="scene-toolbar"><span><i class="live-dot"></i><b id="scene-label" style="font-weight:400">三维实验光路</b></span><div><button class="scene-view selected" data-view="perspective">立体</button><button class="scene-view" data-view="top">俯视</button><button class="scene-view" data-view="front">正视</button><button id="labels-toggle" class="scene-view" aria-pressed="false">显示名称</button><button id="selected-instrument-info" class="scene-view" hidden>查看用法</button><button id="assembly-toggle" class="scene-view" aria-pressed="false">自主搭建</button><button id="interaction-view" class="scene-view selected" aria-pressed="true">旋转视角</button><button id="interaction-move" class="scene-view" aria-pressed="false" disabled>移动元件</button><button id="interaction-rotate" class="scene-view" aria-pressed="false">转动刻度</button><button id="explode-button" class="scene-view">元件展开</button><button id="fullscreen-button" class="scene-view" aria-label="全屏显示三维场景">⛶</button></div></div>
 <section id="scene-current-meter" class="current-meter scene-current-meter" aria-label="独立光电流显示器">
 <div class="meter-readout"><div class="meter-label"><i></i>光电流显示器 <span class="meter-simulation">模拟读数</span></div><div class="meter-number"><i class="meter-symbol">I</i><span class="meter-equals">=</span><output id="current-value" aria-label="模拟光电流，单位微安">75.200</output><span class="meter-unit">μA</span></div></div>
 <div class="meter-detail"><div class="meter-bottom"><span>归一化透射/接收率</span><b id="transmission-value">75.00%</b></div><div class="meter-track" aria-hidden="true"><div id="current-bar"></div></div><p class="meter-live-note">随元件操作实时更新 · 含背景电流</p></div>
 </section>
 <div id="lab-scene" class="scene-canvas"><div class="scene-loading">正在构建光学实验台…</div></div>
-<div class="scene-caption"><span>拖动旋转视角 · 滚轮缩放 · 点击仪器查看用途</span><button id="pause-wave">Ⅱ 暂停电场动画</button></div>
+<div class="scene-caption"><span>拖动旋转视角 · 滚轮缩放 · 点击元件显示名称</span><button id="pause-wave">Ⅱ 暂停电场动画</button></div>
 <div id="optical-chain" class="optical-chain"></div>
 <div id="assembly-panel" class="assembly-panel" hidden>
 <div class="assembly-heading"><strong>沿导轨自主搭建</strong><div><button id="assembly-shuffle" class="btn secondary small">打乱位置</button><button id="assembly-restore" class="btn secondary small">恢复参考位置</button><button id="assembly-check" class="btn primary small">检查当前光路</button></div></div>
@@ -96,5 +96,5 @@
 </div>
 <dialog id="instrument-dialog"><button id="close-dialog" class="dialog-close" aria-label="关闭仪器说明">×</button><div id="dialog-content"></div></dialog>
 <div id="toast" class="toast" role="status"></div>
-<script defer src="./app.bundle.js?v=02dbbaeb5b0d"></script>
+<script defer src="./app.bundle.js?v=9ddf78498a3e"></script>
 </body></html>
