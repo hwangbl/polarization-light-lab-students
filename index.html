@@ -5,7 +5,7 @@
 <meta name="description" content="大学物理偏振光虚拟实验室：真实仪器照片、三维可旋转光路、马吕斯定律、波片与布儒斯特角模拟，以及实验数据处理。">
 <meta name="theme-color" content="#1172ff"><title>偏振光虚拟实验室学生版 · 大学物理实验</title>
 <link rel="stylesheet" href="./katex.min.css?v=b075123b50e5">
-<link rel="stylesheet" href="./style.css?v=bdbb3fb6f390">
+<link rel="stylesheet" href="./style.css?v=4588ebd767f7">
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
@@ -56,7 +56,7 @@
 </div><p id="interaction-help" class="interaction-help">拖底座移动 · 拖刻度环转动 · 拖出导轨取下 · 拖回轨道放入 · 空白处旋转视角</p>
 </section>
 <div class="visualization-grid">
-<section class="panel chart-panel"><div class="panel-heading"><h2>电场矢量轨迹</h2><span id="polarization-tag" class="small-tag">线偏振光</span></div><canvas id="ellipse-chart" aria-label="波片后电场矢量端点轨迹"></canvas><div class="chart-note" id="ellipse-note">固定空间位置，沿光传播方向观察</div></section>
+<section class="panel chart-panel"><div class="panel-heading"><h2 id="ellipse-title">电场矢量轨迹</h2><span id="polarization-tag" class="small-tag">线偏振光</span></div><canvas id="ellipse-chart" aria-label="电场矢量端点轨迹"></canvas><div class="chart-note" id="ellipse-note">固定空间位置，沿光传播方向观察</div></section>
 <section class="panel chart-panel"><div class="panel-heading"><h2 id="curve-title">光电流与检偏角</h2><button id="scan-toggle" class="text-button" hidden>切换扫描对象</button><span class="chart-key"><i></i>理论模拟</span></div><canvas id="intensity-chart" aria-label="模拟光电流随旋转角度变化曲线"></canvas><div class="chart-note" id="curve-note">转动检偏器，光电流按 \(\cos^2\theta\) 变化</div></section>
 </div>
 <div class="panel recording-panel"><div class="panel-heading"><div><h2>我的模拟记录 <span id="record-count">0</span></h2><p>练习采样与记录，记录可发送到数据处理区。</p></div><button id="send-analysis" class="text-button">前往数据处理 ↗</button></div><div id="records-empty" class="empty-records">调整角度后点击「记录当前读数」，或自动扫描生成一组模拟数据。</div><div class="table-scroll"><table class="data-table" id="record-table" hidden><thead><tr><th>项目</th><th>扫描角 / °</th><th>光电流 / μA</th><th>光学配置</th><th>数据来源</th><th></th></tr></thead><tbody></tbody></table></div><div class="record-footer"><button id="export-records" class="btn secondary small">导出记录 CSV</button><button id="clear-records" class="text-button muted">清空记录</button></div></div>
@@ -101,5 +101,5 @@
 </div>
 <dialog id="instrument-dialog"><button id="close-dialog" class="dialog-close" aria-label="关闭仪器说明">×</button><div id="dialog-content"></div></dialog>
 <div id="toast" class="toast" role="status"></div>
-<script defer src="./app.bundle.js?v=b3ed6ce8a3bd"></script>
+<script defer src="./app.bundle.js?v=00506ec388ce"></script>
 </body></html>
